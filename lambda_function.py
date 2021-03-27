@@ -10,10 +10,6 @@ def get_specified_usernames():
         usernames.append(name[:-1]) # Removes newline from end
     return usernames
 
-def generate_two_letter_usernames():
-    two_letter = [''.join(i) for i in product(ascii_lowercase, repeat = 2)]
-    return two_letter 
-
 def get_urls():
     urls = []
     for url in open("./urls", "r"):
@@ -38,14 +34,12 @@ def find_available_usernames(paths):
 def lambda_handler(event, context):
     start_time = time.time()
 
-    specified_usernames = get_specified_usernames()
-    two_letter_usernames = generate_two_letter_usernames()
-    usernames = specified_usernames + two_letter_usernames
+    usernames = get_specified_usernames()
     urls = get_urls()
     paths = generate_paths(usernames, urls)
     available = find_available_usernames(paths)
 
-    print(f"Total time: {time.time() - start_time}")
+    print(f"Total time: {time.time() - start_time}s")
 
     return {
         'statusCode': 200,
