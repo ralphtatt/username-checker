@@ -127,3 +127,13 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Venv
+username-checker/
+
+# Lambda stuff
+deployment_package.zip
+
+# Terraform
+.terraform*
+*.tfstate*
