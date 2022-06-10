@@ -7,8 +7,8 @@ It is deployed using [Serverless](https://www.serverless.com/) framework.
 Clone the repo and run `sls deploy` to setup.
 
 ## Config
-### `urls`
-This file has the URLS that you would like to check, along with a $USERNAME variable for where the username goes in the URL.
+### `domains`
+This file has the domains that you would like to check, along with a $USERNAME variable for where the username goes in the URL.
 
 Example:
 ```
