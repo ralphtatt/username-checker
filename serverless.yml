@@ -11,3 +11,5 @@ provider:
 functions:
   username-checker:
     handler: handler.main
+    events:
+      - schedule: rate(1 day)
