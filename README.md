@@ -1,3 +1,4 @@
+![test workflow](https://github.com/ralphtatt/username-checker/actions/workflows/python-app.yml/badge.svg)
 # username-checker
 Checks if usernames are available on multiple sites, as specified in two files (See config section). 
 
