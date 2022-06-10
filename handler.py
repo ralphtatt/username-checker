@@ -4,17 +4,20 @@ import time
 
 http = urllib3.PoolManager()
 
+
 def get_usernames():
     usernames = []
     for name in open("./usernames", "r"):
-        usernames.append(name[:-1].lower()) # Removes newline from end and changes to lowercase
-    return usernames[:-1] # Removes newline from end
+        usernames.append(name[:-1].lower())  # Removes newline from end and changes to lowercase
+    return usernames[:-1]  # Removes newline from end
+
 
 def get_domains():
     domains = []
     for domain in open("./domains", "r"):
-        domains.append(domain[:-1].lower()) # Removes newline from end
-    return domains[:-1] # Removes newline from end
+        domains.append(domain[:-1].lower())  # Removes newline from end
+    return domains[:-1]  # Removes newline from end
+
 
 def generate_urls(usernames, domains):
     urls = []
@@ -23,6 +26,7 @@ def generate_urls(usernames, domains):
             urls.append(domain.replace("$usercase", username))
     return urls
 
+
 def get_available_usernames(urls):
     available = []
     for address in urls:
@@ -30,6 +34,7 @@ def get_available_usernames(urls):
         if response.status == 404:
             available.append(address)
     return available
+
 
 def main(event, context):
     start_time = time.time()
@@ -45,4 +50,3 @@ def main(event, context):
         'statusCode': 200,
         'body': json.dumps(available)
     }
-
