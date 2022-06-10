@@ -1,0 +1,13 @@
+org: ralphtatt
+app: username-checker
+service: username-checker
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: python3.8
+
+functions:
+  username-checker:
+    handler: handler.main

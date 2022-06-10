@@ -1,8 +1,8 @@
 import json
-import requests
+import urllib3
 import time
-from itertools import product
-from string import ascii_lowercase
+
+http = urllib3.PoolManager()
 
 def get_specified_usernames():
     usernames = []
@@ -26,12 +26,12 @@ def generate_paths(usernames, urls):
 def find_available_usernames(paths):
     available = []
     for address in paths:
-        response = requests.get(address)
-        if response.status_code == 404:
+        response = http.request("GET", address)
+        if response.status == 404:
             available.append(address)
     return available
 
-def lambda_handler(event, context):
+def main(event, context):
     start_time = time.time()
 
     usernames = get_specified_usernames()
